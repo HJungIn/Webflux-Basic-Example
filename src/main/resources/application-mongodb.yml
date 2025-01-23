@@ -1,0 +1,8 @@
+spring:
+  data:
+    mongodb:
+      host: mongodb.tacocloud.com # 몽고DB 서버가 실행중인 호스트 이름(default : localhost)
+      port: 27018 # 몽고 DB 서버가 리스닝하는 포트(default : 27017)
+      username: username # 몽고 DB 사용자 이름
+      password: password # 몽고 DB 비밀번호
+      # database : 데이터베이스 이름(default : test)

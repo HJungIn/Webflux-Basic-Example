@@ -1,0 +1,13 @@
+spring:
+  data:
+    cassandra:
+      keyspace-name: tacocloud
+      schema-action: recreate-drop-unused # 애플리케이션이 매번 시작할 때마다 모든 테이블과 사용자 정의 타입이 삭제되고 재생성됨.
+      # schema-action: none(기본값) # 애플리케이션이 시작하더라도 모든 테이블을 삭제하지 않는 실무 설정에 유용함.
+      port: 9043 # default : 9092
+      contact-points: # 카산드라 노드가 실행중인 호스트를 나타냄 : 각 노드의 호스트 연결을 시도하여 카산드라 클러스터에 단일 장애점이 생기지 않게 해주며, contact-points에 지정된 호스트 중 하나를 통해 애플리케이션이 클러스터에 연결될 수 있게 해줌.
+        - casshost-1.tacocloud.com
+        - casshost-2.tacocloud.com
+        - casshost-3.tacocloud.com
+      username: name
+      password: password

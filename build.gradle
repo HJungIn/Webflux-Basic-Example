@@ -24,7 +24,6 @@ repositories {
 }
 
 dependencies {
-    implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
     implementation 'org.springframework.boot:spring-boot-starter-web'
     implementation 'org.springframework.boot:spring-boot-starter-webflux'
     compileOnly 'org.projectlombok:lombok'
@@ -34,6 +33,17 @@ dependencies {
     // 리액티브 웹 API 보안
     implementation 'org.springframework.boot:spring-boot-starter-security'
 
+    // 리액티브 - 스프링 데이터 카산드라 활성화
+    // 스프링 데이터 카산드라를 활성화하기 위해서는 스프링 데이터 JPA 의존성을 삭제한다.
+    // 또한, 스프링 데이터 JPA 스타터 의존성과 모든 관계형 DB 의존성(JDBC 드라이버 의존성, H2의존성)을 빌드에서 삭제해야 함.
+    //     implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+//    implementation 'org.springframework.boot:spring-boot-starter-data-cassandra-reactive'
+
+    implementation 'org.springframework.boot:spring-boot-starter-data-mongodb-reactive'
+    // 몽고DB의 default port : 27017
+    // 테스트와 개발에 편리하도록 내장된 몽고DB를 대신 사용할 수 있는 Flapdoodle 의존성
+    // Flapdoodle 내장 DB는 인메모리 몽고DB 데이터베이스를 사용하는 것과 동일한 편의성을 제공함.(H2와 같이 별도의 DB 서버를 실행시킬 필요 x, but 애플리케이션 재시작 시 모든 데이터가 없어지고 데이터베이스가 초기화된다.)
+    implementation 'de.flapdoodle.embed:de.flapdoodle.embed.mongo'
 
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
     testImplementation 'io.projectreactor:reactor-test'
